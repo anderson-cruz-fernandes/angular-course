@@ -1,14 +1,23 @@
-<main class="main">
-  <div class="content">
-    <div class="courses">
-      <h1>{{ rxjsCourse.description }}</h1>
-      <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
-      <hr class="dashed">
-      <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
-      <hr class="dashed">
-      <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
-    </div>
+<div class="top-menu">
+  <img class="logo" src="https://angular.io/assets/images/logos/angular/angular.svg">
+</div>
+<div>
+  <h1>Total de cursos: {{courses.length}}</h1>
+  <div class="courses">
+    @for (course of courses; track course.id; let index = $index; let first = $first; let last = $last; let even = $even; let odd = $odd) {
+    <course-card 
+    [course]="course"
+    [index]="index"
+    [class.is-first]="first"
+    [class.is-last]="last"
+    [class.is-even]="even"
+    [class.is-odd]="odd"
+    (courseSelected)="onCourseSelected($event)" />
+    <hr class="dashed">
+    }
+    @empty {
+    <h1>No courses yet!</h1>
+    }
   </div>
-</main>
+</div>
 
-<router-outlet />

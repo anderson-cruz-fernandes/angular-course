@@ -13,14 +13,8 @@ import { Course } from './services/interfaces';
 })
 export class AppComponent {
 
-  coreCourse = COURSES[0];
-  rxjsCourse = COURSES[1];
-  ngrxCourse = COURSES[2];
+  courses = [...COURSES];
   
-  onLogoClicked() {
-    alert('Hello Angular!');
-  }
-
   onCourseSelected(course:Course) {
     console.log('CARD COMPONENT - BUTTON CLICKED ...', course);    
   }
